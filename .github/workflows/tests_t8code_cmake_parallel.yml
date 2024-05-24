@@ -127,6 +127,8 @@ jobs:
     - name: store p4est folders in var
       run: echo P4EST_DEBUG=$PWD/p4est/build_debug >> $GITHUB_ENV
        && echo P4EST_RELEASE=$PWD/p4est/build_release >> $GITHUB_ENV
+    - name: CHECKOUT DIFFERENT P4EST VERSION, REMOVE THIS WHEN https://github.com/cburstedde/p4est/pull/306 IS MERGED
+      run: git remote set-url origin git@github.com:sandro-elsweijer/p4est.git; cd p4est && git checkout 5ac8376bded2d3d4da55cfabd3d475b4894ccf81
     - name: Get p4est commit hash
       run: hash=`git rev-parse HEAD:p4est` && echo p4est_commit=$hash >> $GITHUB_ENV
     - name: Check cache for previous p4est installation
